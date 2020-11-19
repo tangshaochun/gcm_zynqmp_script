@@ -74,8 +74,8 @@ def set_frequency(frequency):
   print('Handling modifications for {0:s}'.format(frequency))
   do_i2c_write(i2c, frequencies[frequency])
   # required by manufacturer for finishing register modifications
-  print('Handling soft reset')
-  do_i2c_write(i2c, Si5345['soft reset'])
+  # print('Handling soft reset')
+  # do_i2c_write(i2c, Si5345['soft reset'])
   # required by manufacturer to lock the clock
   print('Handling postamble')
   do_i2c_write(i2c, Si5345['postamble'])
