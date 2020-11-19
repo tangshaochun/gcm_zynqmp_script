@@ -32,7 +32,7 @@ def batch(iterable, n=1):
 # for the Si5345 clock chip
 def set_page(i2c, page):
   print('  Writing page: {0:02x}'.format(page))
-  i2c.transfer(SI5345_U149_ADDR, [I2C.Message([0x01, page])])
+  i2c.transfer(SI5345_U150_ADDR, [I2C.Message([0x01, page])])
 
 # write a block of commands over i2c
 def do_i2c_block_write(i2c, block):
@@ -42,7 +42,7 @@ def do_i2c_block_write(i2c, block):
     set_page(i2c, page)
     do_i2c_block_write.page = page
   print('  Writing     : {0:02x}{1:02x}'.format(register, value))
-  i2c.transfer(SI5345_U149_ADDR, [I2C.Message([register, value])])
+  i2c.transfer(SI5345_U150_ADDR, [I2C.Message([register, value])])
 # initialize page to 0x0
 do_i2c_block_write.page = 0x00
 
