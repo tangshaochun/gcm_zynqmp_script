@@ -49,12 +49,19 @@ set_i2c_mux(TCA9548_U165_ADDR,Z_IIC_BUS1)
 
 #Configure comp of LTM4700
 regvalue=0xf5
+pmbus_write(LTM4700_U107_ADDR,0x00,0xff)
 pmbus_write(LTM4700_U107_ADDR,0xD3,regvalue)
+pmbus_write(LTM4700_U108_ADDR,0x00,0xff)
 pmbus_write(LTM4700_U108_ADDR,0xD3,regvalue)
+pmbus_write(LTM4700_U109_ADDR,0x00,0xff)
 pmbus_write(LTM4700_U109_ADDR,0xD3,regvalue)
+pmbus_write(LTM4700_U110_ADDR,0x00,0xff)
 pmbus_write(LTM4700_U110_ADDR,0xD3,regvalue)
+pmbus_write(LTM4700_U184_ADDR,0x00,0xff)
 pmbus_write(LTM4700_U184_ADDR,0xD3,regvalue)
+pmbus_write(LTM4678_U6_ADDR,0x00,0xff)
 pmbus_write(LTM4678_U6_ADDR,0xD3,0x94)
+pmbus_write(LTM4678_U7_ADDR,0x00,0xff)
 pmbus_write(LTM4678_U7_ADDR,0xD3,0x94)
 #pmbus_write(LTM4678_U8_ADDR,0xD3,0x94)
 

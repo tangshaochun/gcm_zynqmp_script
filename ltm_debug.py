@@ -22,12 +22,19 @@ def pmbus_read(dev_addr,reg_addr,n_bytes):
   i2c.close()
   return bytes(bytearray(read.data)).encode('hex')
 
+def pmbus_write(dev_addr,reg_addr,reg_value):
+  i2c = I2C("/dev/i2c-0")
+  i2c.transfer(dev_addr, [I2C.Message([reg_addr,reg_value])])   # write the value to the reg_addr
+  i2c.close()
+
 #set the I2C Mux to SENSOR_IIC_BUS 0x01
 set_i2c_mux(TCA9548_U165_ADDR,Z_IIC_BUS1)
 
 #Configure comp of LTM4700
-reg_value=pmbus_read(LTM4678_U7_ADDR,0x88,1)
+pmbus_write(LTM4678_U6_ADDR,0x00,0x1)
+reg_value=pmbus_read(LTM4678_U6_ADDR,0x00,1)
 print(reg_value)
-reg_value=pmbus_read(LTM4678_U8_ADDR,0x88,1)
+pmbus_write(LTM4700_U108_ADDR,0x00,0x1)
+reg_value=pmbus_read(LTM4700_U108_ADDR,0x00,1)
 print(reg_value)
 
